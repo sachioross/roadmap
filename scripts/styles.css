@@ -1,0 +1,21 @@
+.xumak.ui.inverted.blue.segment {
+    background-color: #152e45 !important;
+}
+
+.xumak.blue.dividing.header {
+    background-color: #152e45 !important;
+    border-color: #ef4a4a !important;
+    color: #fff !important;
+}
+
+.xumak.blue.dividing.header .sub.header {
+    color: #ef4a4a !important;
+}
+
+.ui.red.ribbon.label {
+    background-color: #ef4a4a !important;
+}
+
+.ui.red.segment {
+    color: #ef4a4a !important;
+}
