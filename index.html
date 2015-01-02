@@ -4,20 +4,29 @@
         <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.3.2/semantic.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.4/angular.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.3.2/semantic.min.css">
         <script src="roadmap.js"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.3.2/semantic.min.css"></link>
+        <script src="site.js"></script>
+        <link rel="stylesheet" href="styles.css">
     </head>
     <body ng-app="XK_Roadmap">
-        <div class="ui inverted blue header segment">
-            XumaK Bedrock Roadmap
+        <div class="ui xumak inverted blue header segment">
+            <div class="ui grid">
+                <div class="two column row">
+                    <div class="column">XumaK Bedrock Roadmap</div>
+                    <div class="right aligned column">
+                        <div class="ui standard addcard button">Request a Feature</div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="ui vertically padded horizontally padded grid" ng-controller="roadmapBoard">
+        <div class="ui vertically padded horizontally padded grid" ng-controller="RoadmapBoard">
             <div class="ui four column row">
                 <div class="ui column" ng-repeat="list in lists">
                     <div class="ui red header segment">{{list.name}}</div>
                     <div class="ui segment" ng-repeat="card in list.cards">
-                        <div class="ui label {{label.color}}" ng-repeat="label in card.labels">{{label.name}}</div>
-                        <div class="ui segment">{{card.name}}</div>
+                        <div class="ui ribbon label {{label.color}}" ng-repeat="label in card.labels">{{label.name}}</div>
+                        <div class="ui header">{{card.name}}</div>
                     </div>
                 </div>
             </div>
@@ -25,6 +34,28 @@
         <!-- End Road Map output -->
         <div class="ui inverted red segment">
             @Copyright 2015 XumaK, L.L.C.
+        </div>
+        <!-- Modals --> 
+        <div class="ui standard addcard modal">
+            <div class="ui xumak padded blue dividing header">
+                <i class="compass icon"></i>
+                <div class="content">
+                    Submit a feature request
+                    <div class="sub header">If you'd like us to add something to the roadmap, let us know!</div>
+                    <div class="sub header" ng-model="feature.status">Status: {{feature.status}}</div>
+                </div>
+            </div>
+            <div class="ui form segment" ng-controller="RegisterController">
+                <div class="one field">
+                    <div class="field">
+                        <input id="CardName" placeholder="Feature Title" type="text" ng-model="feature.title">
+                    </div>
+                    <div class="field">
+                        <input id="CardDescription" placeholder="Feature Description" type="text" ng-model="feature.description">
+                    </div>
+                </div>
+                <div class="ui submit button" ng-click="register()">Submit</div>
+            </div>
         </div>
     </body>
 </html>
