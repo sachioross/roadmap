@@ -43,7 +43,6 @@
                 <div class="content">
                     Submit a feature request
                     <div class="sub header">If you'd like us to add something to the roadmap, let us know!</div>
-                    <div class="sub header" ng-model="feature.status">Status: {{feature.status}}</div>
                 </div>
             </div>
             <div class="ui form segment" ng-controller="RegisterController">
@@ -56,6 +55,33 @@
                     </div>
                 </div>
                 <div class="ui submit button" ng-click="register()">Submit</div>
+            </div>
+        </div>
+        <div class="ui standard addcard-success modal">
+            <div class="ui xumak padded blue dividing header">
+                <i class="send outline icon"></i>
+                <div class="content">
+                    Success!
+                </div>
+            </div>
+            <div class="ui basic segment">
+                Thank you for helping us out! We'll review the request and, if approved, you'll see it in our backlog!
+                <p>&nbsp;</p>
+            </div>
+        </div>
+        <div class="ui standard addcard-failure modal">
+            <div class="ui xumak padded blue dividing header">
+                <i class="warning circle icon"></i>
+                <div class="content">
+                    Ummmmm.... 
+                </div>
+            </div>
+            <div class="ui basic segment">
+                Unfortunately, the system is under attack by gremlins. We've called the 
+                local gremlin removal company and been informed we're 1337 on the list. 
+                Please try again later and hopefully they gremlins will have been 
+                removed at that time.
+                <p>&nbsp;</p>
             </div>
         </div>
     </body>

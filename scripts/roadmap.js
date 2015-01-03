@@ -87,7 +87,7 @@ app.controller("RoadmapBoard", ['$http', '$scope', function($http, $scope) {
                                         "name=",
                                         $scope.feature.title,
                                         trello.queryParamConcat,
-                                        "description=",
+                                        "desc=",
                                         $scope.feature.description,
                                         trello.queryParamConcat,
                                         "due=null");
@@ -101,27 +101,20 @@ app.controller("RoadmapBoard", ['$http', '$scope', function($http, $scope) {
         }
         
         var req = {
-         method: 'POST',
-         url: trelloWriteListAddress,
-         headers: {
-           'Content-Type': undefined
-         },
-         data: trelloWriteData
-        }
-
-        
-        
+            method: 'POST',
+            url: trelloWriteListAddress,
+            headers: {
+                'Content-Type': undefined
+            },
+            data: trelloWriteData
+        }        
         
         $http(req)
             .success(function(data, status) {
-                console.log("Success");
-                console.log(data);
-                $scope.feature.status = "success";
+                $('.standard.addcard-success').modal('show');
         })
             .error(function(data, status) {
-                console.log("error");
-                console.log(status);
-                $scope.feature.status = "failure";
+                $('.standard.addcard-failure').modal('show');
         });
     };
 }]);

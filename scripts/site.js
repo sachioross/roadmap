@@ -17,7 +17,7 @@ var cardFormValidationRules = {
 
 $(document)
     .ready(function() { 
-        $('.addcard.modal').modal();
+        $('.addcard.modal').modal({allowMultiple: true});
         $('.standard.addcard.modal').modal('attach events', '.addcard.button');
         $('.ui.form').form(cardFormValidationRules, {
             on: 'blur',
