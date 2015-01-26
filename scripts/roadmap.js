@@ -52,8 +52,23 @@ app.controller("RoadmapBoard", ['$http', '$scope', function($http, $scope) {
             for(i in data.lists) {    
                 if (data.lists[i].name !== "Requested") {
                     $scope.lists.push(data.lists[i]);
+                } else {
+                    $scope.requested = data.lists[i];
                 }
             }
+        
+            $http.get(concat(trello.listsUrl,
+                       $scope.requested.id,
+                       "/cards",
+                       trello.queryParamMark,
+                       trello.keyAndToken))
+            .success(function(data, status) {
+                $scope.requested.cards = data;
+                console.log($scope.requested.cards);
+            })
+            .error(function(data, status) {
+                console.log("Error while fetching requested cards: " + status);
+            });
             
             for (var i in $scope.lists) {
                 var promise = $http.get(concat(trello.listsUrl,

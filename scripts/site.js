@@ -23,4 +23,5 @@ $(document)
             on: 'blur',
             inline: 'true'
         });
+        $('.requested-features.modal').modal('attach events', '.requestedfeatures.button');
     });
