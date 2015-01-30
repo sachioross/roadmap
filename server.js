@@ -2,6 +2,7 @@
 //  OpenShift sample Node application
 var express = require('express');
 var fs      = require('fs');
+var xms     = require('xms');
 
 
 /**
@@ -44,6 +45,7 @@ var SampleApp = function() {
 
         //  Local cache for static content.
         self.zcache['index.html'] = fs.readFileSync('./index.html');
+        self.zcache['support'] = fs.readFileSync('./support.html');
     };
 
 
@@ -104,6 +106,11 @@ var SampleApp = function() {
             res.setHeader('Content-Type', 'text/html');
             res.send(self.cache_get('index.html') );
         };
+        
+        self.routes['/support'] = function(req, res) {
+            res.setHeader('Content-Type', 'text/html');
+            res.send(self.cache_get('support') );
+        };
     };
 
 
@@ -118,6 +125,10 @@ var SampleApp = function() {
         //  Add handlers for the app (from the routes).
         for (var r in self.routes) {
             self.app.get(r, self.routes[r]);
+        }
+        
+        for (var r in xms.PostRoutes) {
+            self.app.post(r, xms.PostRoutes[r]);
         }
  
         self.app.use(express.static(__dirname + '/scripts'));
