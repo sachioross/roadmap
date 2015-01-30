@@ -1,0 +1,94 @@
+<html>
+    <head>
+        <title>Bedrock Product Roadmap</title>
+        <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.3.2/semantic.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.4/angular.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.3.2/semantic.min.css">
+        <script src="xms.js"></script>
+        <script src="xms-incident-client.js"></script>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body ng-app="XK_XMS">
+	<!-- simple test -->
+        <div class="ui xumak inverted blue header segment">
+            <div class="ui grid">
+                <div class="two column row">
+                    <div class="column">
+                        <img class="ui left floated tiny circular image" src="/images/excellence.png">
+                        <h1 class="ui middle aligned inverted header">XMS Incident Report</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ui form segment" ng-controller="IncidentForm">
+            <div class="one field">
+                <div class="field">
+                    <div class="ui fluid labeled search selection dropdown">
+                        <i class="users icon"></i>
+                        <input id="ClientName" type="hidden" name="client" ng-model="incident.client">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">Select Client</div>
+                        <div class="menu">
+                            <div class="item" data-value="{{client.id}}" ng-repeat="client in clients" ng-click="select(client)">
+                                {{ client.name }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui left icon input">
+                        <input id="ClientContact" placeholder="Client Contact" type="text" ng-model="incident.clientContact">
+                        <i class="user icon"></i>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui left icon input">
+                        <input id="ClientPhone" placeholder="Client Phone" type="text" ng-model="incident.clientPhone">
+                        <i class="call icon"></i>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui left icon input">
+                        <input id="IncidentDescription" placeholder="Incident Description" type="textarea" ng-model="incident.description">
+                        <i class="info circle icon"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="ui submit button" ng-click="reportIncident()">Submit</div>
+        </div>
+        <!-- End Road Map output -->
+        <div class="ui inverted red segment">
+            @Copyright 2015 XumaK, L.L.C.
+        </div>    
+        <!-- add-card success modal -->
+        <div class="ui standard addcard-success modal">
+            <div class="ui xumak padded blue dividing header">
+                <i class="send outline icon"></i>
+                <div class="content">
+                    Success!
+                </div>
+            </div>
+            <div class="ui basic segment">
+                Thank you for helping us out! We'll review the request and, if approved, you'll see it in our backlog!
+                <p>&nbsp;</p>
+            </div>
+        </div>
+        <!-- add-card error modal -->
+        <div class="ui standard addcard-failure modal">
+            <div class="ui xumak padded blue dividing header">
+                <i class="warning circle icon"></i>
+                <div class="content">
+                    Ummmmm.... 
+                </div>
+            </div>
+            <div class="ui basic segment">
+                Unfortunately, the system is under attack by gremlins. We've called the 
+                local gremlin removal company and been informed we're 1337 on the list. 
+                Please try again later and hopefully they gremlins will have been 
+                removed at that time.
+                <p>&nbsp;</p>
+            </div>
+        </div>
+    </body>
+</html>
