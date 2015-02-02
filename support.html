@@ -60,35 +60,28 @@
         <!-- End Road Map output -->
         <div class="ui inverted red segment">
             @Copyright 2015 XumaK, L.L.C.
-        </div>    
-        <!-- add-card success modal -->
-        <div class="ui standard addcard-success modal">
-            <div class="ui xumak padded blue dividing header">
-                <i class="send outline icon"></i>
-                <div class="content">
-                    Success!
-                </div>
-            </div>
-            <div class="ui basic segment">
-                Thank you for helping us out! We'll review the request and, if approved, you'll see it in our backlog!
-                <p>&nbsp;</p>
-            </div>
         </div>
-        <!-- add-card error modal -->
-        <div class="ui standard addcard-failure modal">
+        <!-- add-card success modal -->
+        <div class="ui standard support modal" ng-controller="SupportNumberController">
             <div class="ui xumak padded blue dividing header">
-                <i class="warning circle icon"></i>
+                <i class="call outline icon"></i>
                 <div class="content">
-                    Ummmmm.... 
+                  Please call the following people in order:
                 </div>
             </div>
             <div class="ui basic segment">
-                Unfortunately, the system is under attack by gremlins. We've called the 
-                local gremlin removal company and been informed we're 1337 on the list. 
-                Please try again later and hopefully they gremlins will have been 
-                removed at that time.
-                <p>&nbsp;</p>
+              <div class="ui divided list">
+                <div class="item" ng-repeat="person in people">
+                  <div class="header">{{person.name}}</div>
+                  <div class="description">
+                    <ul>
+                      <li>Phone: {{person.phone}}</li>
+                      <li>Skype: {{person.skype}}</li>
+                    </ul>
+                </div>
+              </div>
             </div>
+            <p>&nbsp;</p>
         </div>
     </body>
 </html>
