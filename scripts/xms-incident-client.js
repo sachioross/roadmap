@@ -29,12 +29,9 @@ var incidentFormValidationRules = {
     }
 }
 
-// ClientName, ClientContact, ClientPhone, IncidentDescription
-
 $(document)
-    .ready(function() { 
-        // $('.addcard.modal').modal({allowMultiple: true});
-        // $('.standard.addcard.modal').modal('attach events', '.addcard.button');
+    .ready(function() {
+        $('.standard.support.modal').modal();
         $('.ui.form').form(incidentFormValidationRules, {
             on: 'blur',
             inline: 'true'
