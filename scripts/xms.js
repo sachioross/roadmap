@@ -7,11 +7,9 @@ app.controller("IncidentForm", ['$http', '$scope', function($http, $scope) {
     $scope.clients = getClientList();
 
     $scope.reportIncident = function() {
-        console.log($scope.incident);
         $http.post('/submit/incident', $scope.incident)
             .success(function(data, status) {
-              console.log("success");
-                $('.standard.support.modal').modal('show');
+              $('.standard.support.modal').modal('show');
             })
             .error(function(data, status) {
                 console.log(status + " :( " + data);
